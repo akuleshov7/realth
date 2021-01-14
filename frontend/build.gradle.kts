@@ -1,5 +1,9 @@
-import org.cqfn.realth.infra.Versions
+import org.jetbrains.kotlin.gradle.plugin.KotlinJsCompilerType.LEGACY
 
 plugins {
     kotlin("multiplatform") version Versions.KOTLIN
+}
+
+kotlin.js(LEGACY) {
+    browser()
 }
