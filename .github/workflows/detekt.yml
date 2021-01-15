@@ -1,4 +1,4 @@
-name: Run diKTat
+name: Run deteKT
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  diktat_check:
+  detekt_check:
     runs-on: ubuntu-20.04
     env:
       GRADLE_OPTS: -Dorg.gradle.daemon=false

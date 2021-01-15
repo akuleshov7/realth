@@ -21,3 +21,5 @@ diktat {
 }
 createDiktatTask()
 createDetektTask()
+
+installGitHooks()
