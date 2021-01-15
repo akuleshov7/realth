@@ -2,6 +2,8 @@
  * Gradle tasks to install git hooks as a part of the build
  */
 
+package org.cqfn.realth.infra
+
 import org.gradle.api.Project
 import org.gradle.api.tasks.Copy
 import org.gradle.kotlin.dsl.register

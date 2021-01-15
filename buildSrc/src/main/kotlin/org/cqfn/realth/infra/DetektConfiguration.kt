@@ -1,3 +1,7 @@
+/**
+ * Configuration for detekt static analysis
+ */
+
 package org.cqfn.realth.infra
 
 import io.gitlab.arturbosch.detekt.DetektPlugin
@@ -6,6 +10,9 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 
+/**
+ * Configure Detekt for a single project
+ */
 fun Project.configureDetekt() {
     apply<DetektPlugin>()
     configure<DetektExtension> {
@@ -14,6 +21,9 @@ fun Project.configureDetekt() {
     }
 }
 
+/**
+ * Register a unified detekt task
+ */
 fun Project.createDetektTask() {
     tasks.register("detektAll") {
         allprojects {
