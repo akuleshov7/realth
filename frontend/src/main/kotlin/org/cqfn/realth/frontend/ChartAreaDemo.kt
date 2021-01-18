@@ -11,7 +11,7 @@ import kotlin.js.json
 @JsName("Chart")
 external class Chart(context: RenderingContext, config: Json)
 
-fun main() {
+fun addLineChart() {
     val ctx = (document.getElementById("myAreaChart") as HTMLCanvasElement).getContext("2d")
         ?: error("will not create chart, ctx is null")
     val chart = Chart(ctx, json(

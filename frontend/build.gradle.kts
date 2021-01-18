@@ -16,6 +16,7 @@ kotlin {
     sourceSets["main"].dependencies {
         compileOnly(npm("bootstrap", "4.5.3"))
         compileOnly(npm("@fortawesome/fontawesome-free", "5.15.1"))
+        compileOnly("kotlin.js.externals:kotlin-js-jquery:3.2.0-0")  // todo: use react instead of jquery
         implementation("org.jetbrains:kotlin-react:${Versions.KOTLIN_REACT}")
         implementation("org.jetbrains:kotlin-react-dom:${Versions.KOTLIN_REACT}")
         implementation(npm("chart.js", "2.9.4"))
@@ -45,9 +46,6 @@ val compileSassTaskProvider = tasks.register("compileSass", SassCompile::class) 
             from("$rootDir/build/js/node_modules/@fortawesome/fontawesome-free/webfonts")
             into("$buildDir/processedResources/js/main/webfonts")
         }
-//        copy {
-//            from("$buildDir/")
-//        }
     }
 }
 tasks.withType<KotlinWebpack>().forEach {
