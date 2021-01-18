@@ -5,6 +5,7 @@ import org.cqfn.realth.infra.createDetektTask
 import org.cqfn.realth.infra.installGitHooks
 
 plugins {
+    kotlin("jvm") version Versions.KOTLIN apply false
     id("org.cqfn.diktat.diktat-gradle-plugin")
 }
 
