@@ -1,5 +1,6 @@
 import io.freefair.gradle.plugins.jsass.SassCompile
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack
+import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 plugins {
     kotlin("js")
@@ -34,6 +35,34 @@ tasks.getByName("processResources", ProcessResources::class) {
     exclude("scss")
 }
 
+// generate kotlin file with project version to include in web page
+val generateVersionFileTaskProvider = tasks.register("generateVersionFile") {
+    val versionsFile = File("$buildDir/generated/src/generated/Versions.kt")
+
+    outputs.file(versionsFile)
+
+    doFirst {
+        versionsFile.parentFile.mkdirs()
+        versionsFile.writeText(
+            """
+            package generated
+
+            internal const val REALTH_VERSION = "$version"
+
+            """.trimIndent()
+        )
+        logger.lifecycle(sourceSets.joinToString { it.name })
+    }
+}
+val generatedKotlinSrc = kotlin.sourceSets.create("jsGenerated") {
+    kotlin.srcDir("$buildDir/generated/src")
+}
+kotlin.sourceSets.getByName("main").dependsOn(generatedKotlinSrc)
+tasks.withType<Kotlin2JsCompile>().forEach {
+    it.dependsOn(generateVersionFileTaskProvider)
+}
+
+// setup SASS compilation
 val compileSassTaskProvider = tasks.register("compileSass", SassCompile::class) {
     dependsOn(rootProject.tasks.getByName("kotlinNpmInstall"))  // to download dependencies
     dependsOn("processResources")
