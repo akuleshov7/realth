@@ -1,7 +1,6 @@
 package org.cqfn.realth.frontend.components.sidebar
 
 import kotlinx.html.id
-import kotlinx.html.js.onClickFunction
 import react.RBuilder
 import react.RComponent
 import react.RProps
@@ -9,7 +8,6 @@ import react.RState
 import react.dom.a
 import react.dom.button
 import react.dom.div
-import react.dom.h6
 import react.dom.hr
 import react.dom.i
 import react.dom.img
@@ -17,7 +15,6 @@ import react.dom.li
 import react.dom.p
 import react.dom.span
 import react.dom.strong
-import react.dom.sup
 import react.dom.ul
 
 class Sidebar : RComponent<RProps, RState>() {
@@ -28,11 +25,10 @@ class Sidebar : RComponent<RProps, RState>() {
             // Sidebar - Brand
             a(href = "index.html", classes = "sidebar-brand d-flex align-items-center justify-content-center") {
                 div("sidebar-brand-icon rotate-n-15") {
-                    i("fas fa-laugh-wink") {}
+                    i("fas fa-tools") {}
                 }
                 div("sidebar-brand-text mx-3") {
-                    +"SB Admin "
-                    sup { +"2" }
+                    +"REALTH"
                 }
             }
 

@@ -34,8 +34,7 @@ tasks.getByName("processResources", ProcessResources::class) {
 }
 
 val compileSassTaskProvider = tasks.register("compileSass", SassCompile::class) {
-//    dependsOn(rootProject.tasks.getByName("kotlinNpmInstall"))
-    dependsOn("compileKotlinJs")  // to download dependencies
+    dependsOn(rootProject.tasks.getByName("kotlinNpmInstall"))  // to download dependencies
     dependsOn("processResources")
     source(fileTree("$projectDir/src/main/resources/scss").apply { include("/**/*.scss") })
     include("$projectDir/src/main/resources/scss/**/*.scss")
