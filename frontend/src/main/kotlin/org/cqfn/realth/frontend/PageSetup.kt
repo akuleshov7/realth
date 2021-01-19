@@ -1,7 +1,14 @@
+/**
+ * Logic for page initialization that hasn't been converted to React
+ */
+
 package org.cqfn.realth.frontend
 
 import js.externals.jquery.`$`
 
+/**
+ * Enables sidebar collapsing
+ */
 fun setupPage() {
     `$`("document").ready {
         // Toggle the side navigation

@@ -1,6 +1,5 @@
 package org.cqfn.realth.frontend.components.sidebar
 
-import kotlinx.html.id
 import react.RBuilder
 import react.RComponent
 import react.RProps
@@ -17,6 +16,12 @@ import react.dom.span
 import react.dom.strong
 import react.dom.ul
 
+import kotlinx.html.id
+
+/**
+ * A [RComponent] for the left sidebar
+ */
+@Suppress("EMPTY_BLOCK_STRUCTURE_ERROR", "TOO_LONG_FUNCTION")
 class Sidebar : RComponent<RProps, RState>() {
     override fun RBuilder.render() {
         ul("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
@@ -32,11 +37,11 @@ class Sidebar : RComponent<RProps, RState>() {
                 }
             }
 
-            child(Divider::class) {}
+            divider()
 
             // Nav Item - Dashboard
             li("nav-item active") {
-                a(href="index.html", classes = "nav-link") {
+                a(href = "index.html", classes = "nav-link") {
                     i("fas fa-fw fa-tachometer-alt") {}
                     span {
                         +"Dashboard"
@@ -44,7 +49,7 @@ class Sidebar : RComponent<RProps, RState>() {
                 }
             }
 
-            child(Divider::class) {}
+            divider()
 
             sidebarHeading("Interface")
 
@@ -77,7 +82,7 @@ class Sidebar : RComponent<RProps, RState>() {
                 }
             }
 
-            child(Divider::class) {}
+            divider()
 
             sidebarHeading("Addons")
 
@@ -126,24 +131,32 @@ class Sidebar : RComponent<RProps, RState>() {
             }
         }
     }
-}
 
-class Divider: RComponent<RProps, RState>() {
-    override fun RBuilder.render() {
-        hr("sidebar-divider") {}
+    /**
+     * @param text header text
+     * @return a [ReactElement]
+     */
+    private fun RBuilder.sidebarHeading(text: String) = div("sidebar-heading") {
+        +text
     }
-}
 
-// todo function or RComponent?
-fun RBuilder.sidebarHeading(text: String) = div("sidebar-heading") {
-    +text
-}
-
-fun RBuilder.navItem(href: String,
-                     text: String,
-                     iconClasses: String) = li("nav-item") {
-    a(href, classes = "nav-link") {
-        i(iconClasses) {}
-        span { +text }
+    /**
+     * @param href a link
+     * @param text link text
+     * @param iconClasses link icons from font-awesome
+     * @return a [ReactElement]
+     */
+    private fun RBuilder.navItem(href: String,
+                                 text: String,
+                                 iconClasses: String) = li("nav-item") {
+        a(href, classes = "nav-link") {
+            i(iconClasses) {}
+            span { +text }
+        }
     }
+
+    /**
+     * @return [ReactElement] for a divider
+     */
+    private fun RBuilder.divider() = hr("sidebar-divider") {}
 }

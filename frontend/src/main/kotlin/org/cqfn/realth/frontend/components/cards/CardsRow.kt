@@ -5,6 +5,9 @@ import react.RComponent
 import react.RProps
 import react.RState
 
+/**
+ * A [RComponent] representing a row of cards
+ */
 class CardsRow : RComponent<RProps, RState>() {
     override fun RBuilder.render() {
         child(Card::class) {

@@ -11,6 +11,9 @@ import react.createRef
 import react.dom.canvas
 import kotlin.js.json
 
+/**
+ * A [RComponent] representing a canvas with chart from chart.js
+ */
 class ChartContainer : RComponent<RProps, RState>() {
     private val canvasRef: RReadableRef<HTMLCanvasElement> = createRef()
 
@@ -20,6 +23,7 @@ class ChartContainer : RComponent<RProps, RState>() {
         }
     }
 
+    @Suppress("TOO_LONG_FUNCTION")
     override fun componentDidMount() {
         val ctx = canvasRef.current?.getContext("2d")
             ?.takeUnless { it == undefined }

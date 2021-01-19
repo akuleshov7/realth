@@ -1,9 +1,15 @@
+/**
+ * Main entrypoint for REALTH frontend
+ */
+
 package org.cqfn.realth.frontend
 
-import kotlinx.browser.document
 import org.cqfn.realth.frontend.components.Dashboard
 import org.cqfn.realth.frontend.components.sidebar.Sidebar
+
 import react.dom.render
+
+import kotlinx.browser.document
 
 @Suppress("EMPTY_BLOCK_STRUCTURE_ERROR")
 fun main() {

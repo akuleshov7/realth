@@ -3,7 +3,8 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack
 
 plugins {
     kotlin("js")
-    id("io.freefair.jsass-base") version "5.3.0"
+    id("io.freefair.jsass-base") version "5.3.0"  // to compile scss
+//    id("com.eriwen.gradle.css") version "2.14.0"  // to minify compiled css, not currently compatible with gradle 6+
 }
 
 kotlin {
