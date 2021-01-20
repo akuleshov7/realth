@@ -7,8 +7,6 @@ jobs:
   build_and_test_with_code_coverage:
     name: Build, test and upload code coverage
     runs-on: ubuntu-20.04
-#    env:
-#      GRADLE_OPTS: -Dorg.gradle.daemon=false
 
     steps:
       # actions/checkout v1.* is needed for correct codecov upload, see github issues for details
