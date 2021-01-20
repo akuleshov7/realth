@@ -60,7 +60,6 @@ val generateVersionFileTaskProvider = tasks.register("generateVersionFile") {
 
             """.trimIndent()
         )
-        logger.lifecycle(sourceSets.joinToString { it.name })
     }
 }
 val generatedKotlinSrc = kotlin.sourceSets.create("jsGenerated") {
@@ -87,7 +86,7 @@ val compileSassTaskProvider = tasks.register("compileSass", SassCompile::class) 
     }
 }
 tasks.withType<KotlinWebpack>().forEach {
-    it.dependsOn(compileSassTaskProvider)
+//    it.dependsOn(compileSassTaskProvider)
     it.doLast {
         copy {
             from("$buildDir/distributions")
