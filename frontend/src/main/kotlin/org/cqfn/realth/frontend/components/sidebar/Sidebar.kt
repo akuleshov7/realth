@@ -51,53 +51,47 @@ class Sidebar : RComponent<RProps, RState>() {
 
             divider()
 
-            sidebarHeading("Interface")
+            sidebarHeading("Repositories")
 
-            // Nav Item - Pages collapsible menu
+            // Nav Item - Repositories collapsible menu
             child(CollapsibleMenu::class) {
                 attrs {
-                    header = "Components"
+                    header = "My repositories"
                     headerFaClass = "fa-cog"
-                    header2 = "Custom Components:"
+                    header2 = "My repositories:"
                     collapsibleDivId = "collapseTwo"
                     ariaLabeledBy = "headingTwo"
-                    items = listOf("buttons.html" to "buttons", "cards.html" to "cards")
+                    items = listOf("buttons.html" to "realth", "cards.html" to "diktat")
                 }
             }
 
-            // Nav Item - Utilities collapsible menu
+            // Nav Item - Github overview collapsible menu
             child(CollapsibleMenu::class) {
                 attrs {
-                    header = "Utilities"
-                    headerFaClass = "fa-wrench"
-                    header2 = "Custom Utilities:"
+                    header = "Github"
+                    headerFaClass = "fa-github"
+                    header2 = "Github overview:"
                     collapsibleDivId = "collapseUtilities"
                     ariaLabeledBy = "headingUtilities"
-                    items = listOf(
-                        "utilities-color.html" to "Colors",
-                        "utilities-border.html" to "Borders",
-                        "utilities-animation.html" to "Animations",
-                        "utilities-other.html" to "Other",
-                    )
+                    items = listOf("github.html" to "github")
                 }
             }
 
             divider()
 
-            sidebarHeading("Addons")
+            sidebarHeading("Quality analysis")
 
-            // Nav Item - Pages Collapse Menu
             child(CollapsibleMenu::class) {
                 attrs {
-                    header = "Pages"
-                    headerFaClass = "fa-folder"
-                    header2 = "Login Screens:"
+                    header = "Issues"
+                    headerFaClass = "fa-search"
+                    header2 = "Issues:"
                     collapsibleDivId = "collapsePages"
                     ariaLabeledBy = "headingPages"
                     items = listOf(
-                        "login.html" to "Login",
-                        "register.html" to "Register",
-                        "forgot-password.html" to "Forgot Password"
+                        "types.html" to "Issue types",
+                        "vcs.html" to "VCS",
+                        "project-structure.html" to "Project structure"
                     )
                     // todo: support multiple headers in collapsed area
                     // Other Pages:
@@ -106,8 +100,7 @@ class Sidebar : RComponent<RProps, RState>() {
                 }
             }
 
-            navItem("charts.html", "Charts", "fas fa-fw fa-chart-area")
-            navItem("tables.html", "Tables", "fas fa-fw fa-table")
+            navItem("realth.html", "About us", "fas fa-fw fa-address-card")
 
             hr("sidebar-divider d-none d-md-block") {}
 
@@ -122,11 +115,11 @@ class Sidebar : RComponent<RProps, RState>() {
             div("sidebar-card") {
                 img("", "img/undraw_rocket.svg", "sidebar-card-illustration mb-2") {}
                 p("text-center mb-2") {
-                    strong { +"SB Admin Pro" }
-                    +" is packed with premium features, components, and more!"
+                    strong { +"REALTH" }
+                    +" is an open-source project aiming to provide full quality analysis of any git repo"
                 }
-                a(href = "https://startbootstrap.com/theme/sb-admin-pro", classes = "btn btn-success btn-sm") {
-                    +"Upgrade to Pro!"
+                a(href = "https://github.com/cqfn/realth", classes = "btn btn-success btn-sm") {
+                    +"View on GitHub"
                 }
             }
         }

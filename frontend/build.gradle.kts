@@ -1,5 +1,6 @@
 import io.freefair.gradle.plugins.jsass.SassCompile
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 plugins {
@@ -10,12 +11,20 @@ plugins {
 
 kotlin {
     js(LEGACY).browser {
-            repositories {
-                jcenter()
-                maven("https://kotlin.bintray.com/js-externals")
-            }
+        repositories {
+            jcenter()
+            maven("https://kotlin.bintray.com/js-externals")
         }
+        runTask {
+            devServer = KotlinWebpackConfig.DevServer(
+                open = false,
+                port = 3000,
+                contentBase = listOf("$buildDir/processedResources/js/main")
+            )
+        }
+    }
     sourceSets["main"].dependencies {
+        implementation(project(":common"))
         compileOnly(npm("bootstrap", "4.5.3"))
         compileOnly(npm("@fortawesome/fontawesome-free", "5.15.1"))
         compileOnly("kotlin.js.externals:kotlin-js-jquery:3.2.0-0")  // todo: use react instead of jquery

@@ -12,5 +12,4 @@ import kotlin.js.Json
  */
 @JsModule("chart.js")
 @JsNonModule
-@JsName("Chart")
 external class Chart(context: RenderingContext, config: Json)

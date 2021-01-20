@@ -5,6 +5,10 @@
 package org.cqfn.realth.frontend.components
 
 import org.cqfn.realth.frontend.components.cards.CardsRow
+import org.cqfn.realth.frontend.components.charts.BarChartContainer
+import org.cqfn.realth.frontend.components.charts.PieChartContainer
+import org.cqfn.realth.frontend.components.tables.TableComponent
+
 import react.RBuilder
 import react.RComponent
 import react.RProps
@@ -22,6 +26,7 @@ class DashboardState : RState {
      * Currently active project
      */
     lateinit var currentProject: String
+    lateinit var currentProjectRepoUrl: String
 }
 
 /**
@@ -31,13 +36,14 @@ class DashboardState : RState {
 class Dashboard : RComponent<RProps, DashboardState>() {
     init {
         state.currentProject = "REALTH"
+        state.currentProjectRepoUrl = "https://github.com/cqfn/realth"
     }
 
     override fun RBuilder.render() {
         // Page Heading
         div("d-sm-flex align-items-center justify-content-between mb-4") {
             h1("h3 mb-0 text-gray-800") {
-                +"Dashboard for ${state.currentProject}"
+                +"Dashboard for ${state.currentProject} (${state.currentProjectRepoUrl})"
             }
             a("#", classes = "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm") {
                 i("fas fa-download fa-sm text-white-50") {
@@ -51,7 +57,22 @@ class Dashboard : RComponent<RProps, DashboardState>() {
         }
 
         div("row") {
-            child(ChartContainer::class) {}
+            child(PieChartContainer::class) {
+                attrs {
+                    header = "Issue summary"
+                }
+            }
+            child(BarChartContainer::class) {
+                attrs {
+                    header = "Top issues"
+                }
+            }
+        }
+
+        child(TableComponent::class) {
+            attrs {
+                tableHeader = "Issues"
+            }
         }
     }
 }
