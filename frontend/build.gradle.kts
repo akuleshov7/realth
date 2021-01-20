@@ -86,7 +86,7 @@ val compileSassTaskProvider = tasks.register("compileSass", SassCompile::class) 
     }
 }
 tasks.withType<KotlinWebpack>().forEach {
-//    it.dependsOn(compileSassTaskProvider)
+    it.dependsOn(compileSassTaskProvider)
     it.doLast {
         copy {
             from("$buildDir/distributions")

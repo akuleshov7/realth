@@ -25,9 +25,8 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle-build
       - name: Gradle build
         run: |
-          ./gradlew build -x detekt --info --stacktrace || echo Gradle process has finished with error
-          pwd
-          ls -la .
+          ./gradlew :frontend:compileSass --info --stacktrace
+          ./gradlew build -x detekt --info --stacktrace
       # TODO: enable when we have actual tests
       - name: Code coverage report
         if: false
