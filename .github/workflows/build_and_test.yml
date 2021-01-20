@@ -25,9 +25,8 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle-build
       - name: Gradle build
         run: |
-          ./gradlew :frontend:compileSass --info --stacktrace &
-          for i in $( seq 1 240 ); do free -h && sleep 1; done
-          ./gradlew build -x detekt --info --stacktrace
+          ./gradlew :frontend:compileSass --info --stacktrace || dmesg | tail -150
+#          ./gradlew build -x detekt --info --stacktrace
       # TODO: enable when we have actual tests
       - name: Code coverage report
         if: false
