@@ -25,7 +25,7 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle-build
       - name: Gradle build
         run: |
-          ./gradlew build -x detekt --debug --stacktrace
+          ./gradlew build -x detekt --info --stacktrace || echo Gradle process has finished with error
           pwd
           ls -la .
       # TODO: enable when we have actual tests
