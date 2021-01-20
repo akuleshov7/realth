@@ -26,7 +26,7 @@ jobs:
           key: ${{ runner.os }}-gradle-build-${{ hashFiles('**/*.gradle*') }}
           restore-keys: ${{ runner.os }}-gradle-build
       - name: Gradle build
-        run: ./gradlew build -x detekt
+        run: ./gradlew build -x detekt --info
       # TODO: enable when we have actual tests
       - name: Code coverage report
         if: false
