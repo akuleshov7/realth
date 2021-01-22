@@ -14,6 +14,7 @@ import org.cqfn.realth.frontend.components.Footer
 
 @Suppress("EMPTY_BLOCK_STRUCTURE_ERROR")
 fun main() {
+    kotlinext.js.require("../scss/sb-admin-2.scss")  // this is needed for webpack to include resource
     render(document.getElementById("sidebar-wrapper")) {
         child(Sidebar::class) {}
     }

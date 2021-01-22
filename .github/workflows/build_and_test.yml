@@ -25,8 +25,7 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle-build
       - name: Gradle build
         run: |
-          ./gradlew :frontend:compileSass --info --stacktrace || dmesg | tail -150
-#          ./gradlew build -x detekt --info --stacktrace
+          ./gradlew build -x detekt
       # TODO: enable when we have actual tests
       - name: Code coverage report
         if: false
@@ -35,3 +34,12 @@ jobs:
           file: '**/build/jacoco/jacoco.xml'
           flags: unittests
           fail_ci_if_error: true # optional (default = false)
+      # TODO: remove, temporary to check if GH build is correct
+      - name: Upload web bundle to artifacts
+        uses: actions/upload-artifact@v2
+          with:
+            name: frontend-bundle
+            path: frontend/build/distribution.zip
+            # no need to store artifact longer, it is used only by dependant jobs
+            retention-days: 1
+
