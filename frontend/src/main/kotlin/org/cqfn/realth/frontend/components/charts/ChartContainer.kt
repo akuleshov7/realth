@@ -65,5 +65,8 @@ abstract class ChartContainer : RComponent<ChartProps, RState>() {
         createChart()
     }
 
+    /**
+     * Logic for creating chart using Chart.js
+     */
     abstract fun createChart()
 }
