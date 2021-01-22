@@ -1,4 +1,3 @@
-import org.gradle.kotlin.dsl.support.zipTo
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
@@ -99,13 +98,7 @@ tasks.withType<KotlinWebpack>().forEach {
     }
     it.doLast {
         // remove resources that have been bundled into frontend.js
-        fileTree("$buildDir/distributions") {
-            include("scss/**")
-            include("webfonts/**")
-        }
-            .forEach {
-                it.delete()
-            }
-        zipTo(file("$buildDir/distribution.zip"), file("$buildDir/distributions"))  // todo: remove, for testing with GH
+        file("$buildDir/distributions/scss").deleteRecursively()
+        file("$buildDir/distributions/webfonts").deleteRecursively()
     }
 }
