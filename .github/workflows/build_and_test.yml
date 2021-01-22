@@ -37,9 +37,9 @@ jobs:
       # TODO: remove, temporary to check if GH build is correct
       - name: Upload web bundle to artifacts
         uses: actions/upload-artifact@v2
-          with:
-            name: frontend-bundle
-            path: frontend/build/distribution.zip
-            # no need to store artifact longer, it is used only by dependant jobs
-            retention-days: 1
+        with:
+          name: frontend-bundle
+          path: frontend/build/distribution.zip
+          # no need to store artifact longer, it is used only by dependant jobs
+          retention-days: 1
 
