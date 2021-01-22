@@ -14,7 +14,7 @@ import kotlinx.browser.document
 
 @Suppress("EMPTY_BLOCK_STRUCTURE_ERROR")
 fun main() {
-    kotlinext.js.require("../scss/sb-admin-2.scss")  // this is needed for webpack to include resource
+    kotlinext.js.require("../scss/realth.scss")  // this is needed for webpack to include resource
     render(document.getElementById("sidebar-wrapper")) {
         child(Sidebar::class) {}
     }

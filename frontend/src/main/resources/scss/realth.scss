@@ -1,7 +1,7 @@
-// Import Custom SB Admin 2 Variables (Overrides Default Bootstrap Variables)
+// Import Custom Variables (Overrides Default Bootstrap Variables)
 @import "variables.scss";
 
-// Import Bootstrap, todo: path?
+// Import npm dependencies from node_modules in rootProject.buildDir
 @import "../../../../../build/js/node_modules/bootstrap/scss/bootstrap";
 @import "../../../../../build/js/node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
 @import "../../../../../build/js/node_modules/@fortawesome/fontawesome-free/scss/solid";
