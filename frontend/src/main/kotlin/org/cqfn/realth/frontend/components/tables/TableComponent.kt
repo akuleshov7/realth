@@ -67,7 +67,7 @@ class TableComponent : RComponent<TableProps, RState>() {
                         tbody {
                             issues.forEachIndexed { index, issue ->
                                 tr {
-                                    td { +"$index" }
+                                    td { +index.toString() }
                                     td { +issue.name }
                                     td { +"${issue.type}" }
                                     td { +issue.description }

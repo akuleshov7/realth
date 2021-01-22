@@ -6,14 +6,14 @@ package org.cqfn.realth.frontend
 
 import org.cqfn.realth.frontend.components.Dashboard
 import org.cqfn.realth.frontend.components.Footer
+import org.cqfn.realth.frontend.components.Topbar
 import org.cqfn.realth.frontend.components.sidebar.Sidebar
 
+import react.dom.div
 import react.dom.render
 
 import kotlinx.browser.document
 import kotlinx.html.id
-import org.cqfn.realth.frontend.components.Topbar
-import react.dom.div
 
 @Suppress("EMPTY_BLOCK_STRUCTURE_ERROR")
 fun main() {

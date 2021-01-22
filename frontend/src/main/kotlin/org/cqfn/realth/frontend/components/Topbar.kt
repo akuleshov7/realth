@@ -15,6 +15,10 @@ import kotlinx.html.ButtonType
 import kotlinx.html.InputType
 import kotlinx.html.id
 
+/**
+ * A [RComponent] for top bar
+ */
+@Suppress("EMPTY_BLOCK_STRUCTURE_ERROR")
 class Topbar : RComponent<RProps, RState>() {
     override fun RBuilder.render() {
         nav("navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow") {
