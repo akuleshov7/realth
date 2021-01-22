@@ -7,6 +7,7 @@ import react.RProps
 import react.RState
 import react.dom.br
 import react.dom.div
+import react.dom.footer
 import react.dom.span
 
 /**
@@ -16,12 +17,14 @@ import react.dom.span
 class Footer : RComponent<RProps, RState>() {
     @Suppress("EMPTY_BLOCK_STRUCTURE_ERROR")
     override fun RBuilder.render() {
-        div("container my-auto") {
-            div("copyright text-center my-auto") {
-                span {
-                    +"Copyright &copy REALTH 2020"
-                    br {}
-                    +"Version $REALTH_VERSION"
+        footer("sticky-footer bg-white") {
+            div("container my-auto") {
+                div("copyright text-center my-auto") {
+                    span {
+                        +"Copyright &copy REALTH 2020"
+                        br {}
+                        +"Version $REALTH_VERSION"
+                    }
                 }
             }
         }
