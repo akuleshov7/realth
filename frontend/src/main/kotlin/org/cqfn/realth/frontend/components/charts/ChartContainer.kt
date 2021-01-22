@@ -1,3 +1,7 @@
+/**
+ * Classes for representing charts from Chart.js in react component
+ */
+
 package org.cqfn.realth.frontend.components.charts
 
 import org.w3c.dom.CanvasRenderingContext2D
@@ -12,7 +16,13 @@ import react.dom.canvas
 import react.dom.div
 import react.dom.h6
 
+/**
+ * [RProps] for a chart
+ */
 class ChartProps : RProps {
+    /**
+     * Header of a chart
+     */
     lateinit var header: String
 }
 
@@ -21,7 +31,11 @@ class ChartProps : RProps {
  */
 abstract class ChartContainer : RComponent<ChartProps, RState>() {
     private val canvasRef: RReadableRef<HTMLCanvasElement> = createRef()
-    protected lateinit var context2D: CanvasRenderingContext2D
+
+    /**
+     * Rendering context from a canvas, that will be used for chart rendering
+     */
+    protected lateinit var context2d: CanvasRenderingContext2D
 
     override fun RBuilder.render() {
         div("col-xl-4 col-lg-5") {
@@ -44,9 +58,12 @@ abstract class ChartContainer : RComponent<ChartProps, RState>() {
 
     @Suppress("TOO_LONG_FUNCTION")
     override fun componentDidMount() {
-        context2D = canvasRef.current?.getContext("2d")
+        context2d = canvasRef.current?.getContext("2d")
             ?.takeUnless { it == undefined }
             ?.let { it as CanvasRenderingContext2D }
             ?: error("Rendering context unavailable")
+        createChart()
     }
+
+    abstract fun createChart()
 }

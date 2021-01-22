@@ -9,6 +9,7 @@ import react.RState
  * A [RComponent] representing a row of cards
  */
 class CardsRow : RComponent<RProps, RState>() {
+    @Suppress("TOO_LONG_FUNCTION")
     override fun RBuilder.render() {
         child(Card::class) {
             attrs {

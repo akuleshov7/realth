@@ -3,11 +3,13 @@ package org.cqfn.realth.frontend.components.charts
 import org.cqfn.realth.frontend.externals.Chart
 import kotlin.js.json
 
+/**
+ * A [RComponent] for a pie chart
+ */
 class PieChartContainer : ChartContainer() {
-    override fun componentDidMount() {
-        super.componentDidMount()
+    override fun createChart() {
         Chart(
-            context2D,
+            context2d,
             json(
                 "type" to "doughnut",
                 "data" to json(

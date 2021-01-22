@@ -26,6 +26,10 @@ class DashboardState : RState {
      * Currently active project
      */
     lateinit var currentProject: String
+
+    /**
+     * A URL of a currently active project's repo
+     */
     lateinit var currentProjectRepoUrl: String
 }
 

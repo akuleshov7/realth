@@ -102,3 +102,7 @@ tasks.withType<KotlinWebpack>().forEach {
         file("$buildDir/distributions/webfonts").deleteRecursively()
     }
 }
+
+detekt {
+    config.setFrom(config.plus(file("detekt.yml")))
+}

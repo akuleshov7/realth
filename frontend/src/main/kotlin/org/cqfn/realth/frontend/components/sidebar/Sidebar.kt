@@ -21,7 +21,7 @@ import kotlinx.html.id
 /**
  * A [RComponent] for the left sidebar
  */
-@Suppress("EMPTY_BLOCK_STRUCTURE_ERROR", "TOO_LONG_FUNCTION")
+@Suppress("EMPTY_BLOCK_STRUCTURE_ERROR", "TOO_LONG_FUNCTION", "LongMethod")
 class Sidebar : RComponent<RProps, RState>() {
     override fun RBuilder.render() {
         ul("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion") {
@@ -93,10 +93,6 @@ class Sidebar : RComponent<RProps, RState>() {
                         "vcs.html" to "VCS",
                         "project-structure.html" to "Project structure"
                     )
-                    // todo: support multiple headers in collapsed area
-                    // Other Pages:
-                    // <a class="collapse-item" href="404.html">404 Page</a>
-                    // <a class="collapse-item" href="blank.html">Blank Page</a>
                 }
             }
 

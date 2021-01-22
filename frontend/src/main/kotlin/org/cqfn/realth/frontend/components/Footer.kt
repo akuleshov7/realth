@@ -5,14 +5,16 @@ import react.RBuilder
 import react.RComponent
 import react.RProps
 import react.RState
+import react.dom.br
 import react.dom.div
 import react.dom.span
-import react.dom.br
 
 /**
  * todo: style is not attached for some reason
  */
+@Suppress("ForbiddenComment")
 class Footer : RComponent<RProps, RState>() {
+    @Suppress("EMPTY_BLOCK_STRUCTURE_ERROR")
     override fun RBuilder.render() {
         div("container my-auto") {
             div("copyright text-center my-auto") {

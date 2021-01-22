@@ -1,8 +1,12 @@
+/**
+ * Classes to use datatables in kotlin-react
+ */
+
 package org.cqfn.realth.frontend.components.tables
 
-import kotlinx.html.id
 import org.cqfn.realth.domain.Issue
 import org.cqfn.realth.domain.IssueType
+
 import react.RBuilder
 import react.RComponent
 import react.RProps
@@ -16,11 +20,23 @@ import react.dom.th
 import react.dom.thead
 import react.dom.tr
 
+import kotlinx.html.id
+
+/**
+ * [RProps] of a data table
+ */
 class TableProps : RProps {
+    /**
+     * Table header
+     */
     lateinit var tableHeader: String
 }
 
+/**
+ * A [RComponent] for a data table
+ */
 class TableComponent : RComponent<TableProps, RState>() {
+    @Suppress("TOO_LONG_FUNCTION")
     override fun RBuilder.render() {
         val issues = listOf(
             Issue("Inconsistent commit messages", IssueType.VCS, "Commit messages do not follow a specific format"),
@@ -51,7 +67,7 @@ class TableComponent : RComponent<TableProps, RState>() {
                         tbody {
                             issues.forEachIndexed { index, issue ->
                                 tr {
-                                    td { +"$index" }
+                                    td { +index }
                                     td { +issue.name }
                                     td { +"${issue.type}" }
                                     td { +issue.description }

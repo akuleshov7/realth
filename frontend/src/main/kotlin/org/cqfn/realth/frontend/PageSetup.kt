@@ -10,6 +10,7 @@ import kotlin.js.json
 /**
  * Enables sidebar collapsing
  */
+@Suppress("ForbiddenComment")
 fun setupPage() {
     `$`("document").ready {
         // Toggle the side navigation
@@ -26,11 +27,17 @@ fun setupPage() {
     }
 }
 
+/**
+ * Additional configuration for Chart.js. Sets default fonts and colors.
+ */
 fun configureChartJs() {
     eval("Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif';")
     eval("Chart.defaults.global.defaultFontColor = '#858796';")
 }
 
+/**
+ * Launch datatables plugin via jQuery
+ */
 fun setupDataTables() {
     `$`("document").ready {
         val dataTable = `$`("#example").asDynamic().dataTable(
