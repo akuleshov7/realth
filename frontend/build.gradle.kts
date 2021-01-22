@@ -81,6 +81,7 @@ tasks.withType<Kotlin2JsCompile>().forEach {
 
 val copyWebfontsTaskProvider = tasks.register("copyWebfonts", Copy::class) {
     // add fontawesome font into the build
+    dependsOn("kotlinNpmInstall")  // to have dependencies downloaded
     from("$rootDir/build/js/node_modules/@fortawesome/fontawesome-free/webfonts")
     into("$buildDir/processedResources/js/main/webfonts")
 }
