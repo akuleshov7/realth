@@ -13,6 +13,15 @@ class CardsRow : RComponent<RProps, RState>() {
     override fun RBuilder.render() {
         child(Card::class) {
             attrs {
+                header = "Main Languages"
+                value = "Kotlin, Java"
+                faIcon = "fa-terminal"
+                leftBorderColor = "primary"
+            }
+        }
+
+        child(Card::class) {
+            attrs {
                 header = "Number of tests"
                 value = "150"
                 faIcon = "fa-vials"
