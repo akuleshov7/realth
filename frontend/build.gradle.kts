@@ -27,9 +27,6 @@ kotlin {
         binaries.executable()  // already default for LEGACY, but will be needed for IR
         sourceSets["main"].dependencies {
             implementation(project(":common"))
-            compileOnly(npm("bootstrap", "4.5.3"))
-            compileOnly(npm("@fortawesome/fontawesome-free", "5.15.1"))
-            compileOnly("kotlin.js.externals:kotlin-js-jquery:3.2.0-0")  // todo: use react instead of jquery
 
             // devDependencies for webpack
             compileOnly(devNpm("node-sass", "*"))
@@ -40,11 +37,18 @@ kotlin {
             compileOnly(devNpm("file-loader", "*"))
 //            compileOnly(devNpm("mini-css-extract-plugin", "*"))
 
+            // npm dependencies to include in webpack bundle and some kotlin adapters
+            implementation(npm("bootstrap", "4.5.3"))
+            compileOnly(npm("@fortawesome/fontawesome-free", "5.15.1"))  // needed to copy fonts to resources, not needed in runtime
+            compileOnly("kotlin.js.externals:kotlin-js-jquery:3.2.0-0")  // todo: use react instead of jquery
             implementation("org.jetbrains:kotlin-react:${Versions.KOTLIN_REACT}")
             implementation("org.jetbrains:kotlin-react-dom:${Versions.KOTLIN_REACT}")
-            implementation(npm("chart.js", "2.9.4"))
             implementation(npm("react", Versions.REACT))
             implementation(npm("react-dom", Versions.REACT))
+            implementation(npm("chart.js", "2.9.4"))
+            implementation(npm("datatables.net", "1.10.23"))
+            implementation(npm("datatables.net-bs4", "1.10.23"))
+
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.KOTLIN_COROUTINES}")
         }
         sourceSets["test"].dependencies {
