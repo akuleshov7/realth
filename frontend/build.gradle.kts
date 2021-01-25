@@ -107,16 +107,6 @@ tasks.withType<KotlinWebpack>().forEach {
         file("$buildDir/distributions/webfonts").deleteRecursively()
     }
 }
-// configure output so that it can be referenced from backend, instead of manually copying files
-// todo: needs to be tested
-val webpack: Configuration by configurations.creating {
-    isCanBeConsumed = true
-    isCanBeResolved = false
-}
-val webpackTask = tasks.getByName("browserWebpack") as KotlinWebpack
-artifacts.add(webpack.name, webpackTask.destinationDirectory) {  // task may be needed to change to `developmentWebpack`
-    builtBy(webpackTask)
-}
 
 detekt {
     config.setFrom(config.plus(file("detekt.yml")))
