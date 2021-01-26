@@ -7,6 +7,7 @@ object Versions {
     const val DETEKT = "1.15.0"
     const val JACOCO = "0.8.6"
     const val KOTLIN_COROUTINES = "1.4.2"
-    const val KOTLIN_REACT = "17.0.1-pre.141-kotlin-1.4.21"
+    const val KOTLIN_REACT = "17.0.1-pre.142-kotlin-1.4.21"
+    const val KOTLIN_REACT_ROUTER = "5.2.0-pre.142-kotlin-1.4.21"
     const val REACT = "17.0.1"
 }
