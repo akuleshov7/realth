@@ -34,19 +34,3 @@ fun configureChartJs() {
     eval("Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif';")
     eval("Chart.defaults.global.defaultFontColor = '#858796';")
 }
-
-/**
- * Launch datatables plugin via jQuery
- */
-fun setupDataTables() {
-    `$`("document").ready {
-        val dataTable = `$`("#example").asDynamic().dataTable(
-            json(
-                "processing" to true,
-                "serverSide" to true,
-                "ajax" to "scripts/server_processing.php",
-                "deferLoading" to 57
-            )
-        )
-    }
-}

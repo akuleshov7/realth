@@ -4,19 +4,24 @@
 
 package org.cqfn.realth.frontend.components
 
+import org.cqfn.realth.domain.Issue
+import org.cqfn.realth.domain.IssueType
 import org.cqfn.realth.frontend.components.cards.CardsRow
 import org.cqfn.realth.frontend.components.charts.BarChartContainer
 import org.cqfn.realth.frontend.components.charts.PieChartContainer
-import org.cqfn.realth.frontend.components.tables.TableComponent
+import org.cqfn.realth.frontend.components.tables.tableComponent
 
 import react.RBuilder
 import react.RComponent
 import react.RProps
 import react.RState
+import react.child
 import react.dom.a
 import react.dom.div
 import react.dom.h1
 import react.dom.i
+import react.dom.td
+import react.table.columns
 
 /**
  * A [RProps] for project dashboard
@@ -73,7 +78,35 @@ class Dashboard : RComponent<ProjectProps, RState>() {
             }
         }
 
-        child(TableComponent::class) {
+        child(tableComponent(
+            data = arrayOf(
+                Issue("Inconsistent commit messages", IssueType.VCS, "Commit messages do not follow a specific format"),
+                Issue("Committer name/email", IssueType.VCS, "There are committers with same email and different names"),
+                Issue("Generated code committed", IssueType.VCS, "Generated code is committed to VCS"),
+            ),
+            columns = columns {
+                column(id = "index", header = "#") {
+                    td {
+                        +"${it.row.index}"
+                    }
+                }
+                column(id = "issueName", header = "Name") {
+                    td {
+                        +it.value.name
+                    }
+                }
+                column(id = "issueType", header = "Type") {
+                    td {
+                        +"${it.value.type}"
+                    }
+                }
+                column(id = "issueDescription", header = "Description") {
+                    td {
+                        +it.value.description
+                    }
+                }
+            }
+        )) {
             attrs {
                 tableHeader = "Issues"
             }

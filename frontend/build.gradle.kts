@@ -43,12 +43,10 @@ kotlin {
             compileOnly("kotlin.js.externals:kotlin-js-jquery:3.2.0-0")  // todo: use react instead of jquery
             implementation("org.jetbrains:kotlin-react:${Versions.KOTLIN_REACT}")
             implementation("org.jetbrains:kotlin-react-dom:${Versions.KOTLIN_REACT}")
-            implementation("org.jetbrains:kotlin-react-router-dom:${Versions.KOTLIN_REACT_ROUTER}")
+            implementation("org.jetbrains:kotlin-react-table:7.6.3-pre.143-kotlin-1.4.21")
             implementation(npm("react", Versions.REACT))
             implementation(npm("react-dom", Versions.REACT))
             implementation(npm("chart.js", "2.9.4"))
-            implementation(npm("datatables.net", "1.10.23"))
-            implementation(npm("datatables.net-bs4", "1.10.23"))
 
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.KOTLIN_COROUTINES}")
         }
