@@ -27,6 +27,9 @@ class ProjectProps : RProps {
      */
     lateinit var project: String
 
+    /**
+     * Organization (or user) on github, where this project belongs to
+     */
     lateinit var organization: String
 
     /**

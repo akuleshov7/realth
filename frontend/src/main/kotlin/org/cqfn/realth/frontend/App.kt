@@ -5,19 +5,20 @@
 package org.cqfn.realth.frontend
 
 import org.cqfn.realth.frontend.components.Dashboard
+import org.cqfn.realth.frontend.components.FallbackView
 import org.cqfn.realth.frontend.components.Footer
+import org.cqfn.realth.frontend.components.ProjectProps
 import org.cqfn.realth.frontend.components.Topbar
 import org.cqfn.realth.frontend.components.sidebar.Sidebar
 
 import react.dom.div
 import react.dom.render
-
-import kotlinx.browser.document
-import kotlinx.html.id
-import org.cqfn.realth.frontend.components.ProjectProps
 import react.router.dom.hashRouter
 import react.router.dom.route
 import react.router.dom.switch
+
+import kotlinx.browser.document
+import kotlinx.html.id
 
 @Suppress("EMPTY_BLOCK_STRUCTURE_ERROR")
 fun main() {
@@ -39,6 +40,7 @@ fun main() {
                                 }
                             }
                         }
+                        route("*", FallbackView::class)
                     }
                 }
             }
