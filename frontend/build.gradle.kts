@@ -43,6 +43,7 @@ kotlin {
             compileOnly("kotlin.js.externals:kotlin-js-jquery:3.2.0-0")  // todo: use react instead of jquery
             implementation("org.jetbrains:kotlin-react:${Versions.KOTLIN_REACT}")
             implementation("org.jetbrains:kotlin-react-dom:${Versions.KOTLIN_REACT}")
+            implementation("org.jetbrains:kotlin-react-router-dom:${Versions.KOTLIN_REACT_ROUTER}")
             implementation(npm("react", Versions.REACT))
             implementation(npm("react-dom", Versions.REACT))
             implementation(npm("chart.js", "2.9.4"))

@@ -19,35 +19,32 @@ import react.dom.h1
 import react.dom.i
 
 /**
- * A [RState] for project dashboard
+ * A [RProps] for project dashboard
  */
-class DashboardState : RState {
+class ProjectProps : RProps {
     /**
      * Currently active project
      */
-    lateinit var currentProject: String
+    lateinit var project: String
+
+    lateinit var organization: String
 
     /**
      * A URL of a currently active project's repo
      */
-    lateinit var currentProjectRepoUrl: String
+    lateinit var projectRepoUrl: String
 }
 
 /**
  * [RComponent] for the project dashboard
  */
 @Suppress("EMPTY_BLOCK_STRUCTURE_ERROR")
-class Dashboard : RComponent<RProps, DashboardState>() {
-    init {
-        state.currentProject = "REALTH"
-        state.currentProjectRepoUrl = "https://github.com/cqfn/realth"
-    }
-
+class Dashboard : RComponent<ProjectProps, RState>() {
     override fun RBuilder.render() {
         // Page Heading
         div("d-sm-flex align-items-center justify-content-between mb-4") {
             h1("h3 mb-0 text-gray-800") {
-                +"Dashboard for ${state.currentProject} (${state.currentProjectRepoUrl})"
+                +"Dashboard for ${props.project} (${props.projectRepoUrl})"
             }
             a("#", classes = "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm") {
                 i("fas fa-download fa-sm text-white-50") {
