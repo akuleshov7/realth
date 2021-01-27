@@ -1,3 +1,7 @@
+/**
+ * Methods to use a RComponent for a collection of projects
+ */
+
 package org.cqfn.realth.frontend.components
 
 import org.cqfn.realth.domain.Project
@@ -9,6 +13,8 @@ import react.table.columns
 
 /**
  * A [RComponent] for a dashboard with projects table
+ *
+ * @return a functional react component
  */
 internal fun RBuilder.collectionView() = tableComponent(
     data = arrayOf(

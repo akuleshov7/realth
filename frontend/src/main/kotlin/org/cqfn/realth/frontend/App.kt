@@ -9,8 +9,10 @@ import org.cqfn.realth.frontend.components.FallbackView
 import org.cqfn.realth.frontend.components.Footer
 import org.cqfn.realth.frontend.components.ProjectProps
 import org.cqfn.realth.frontend.components.Topbar
+import org.cqfn.realth.frontend.components.collectionView
 import org.cqfn.realth.frontend.components.sidebar.Sidebar
 
+import react.child
 import react.dom.div
 import react.dom.render
 import react.router.dom.hashRouter
@@ -24,14 +26,14 @@ import kotlinx.html.id
 fun main() {
     kotlinext.js.require("../scss/realth.scss")  // this is needed for webpack to include resource
     render(document.getElementById("wrapper")) {
-        child(Sidebar::class) {}
-        div("d-flex flex-column") {
-            attrs.id = "content-wrapper"
-            child(Topbar::class) {}
-            div("container-fluid") {
-                hashRouter {
+        hashRouter {
+            child(Sidebar::class) {}
+            div("d-flex flex-column") {
+                attrs.id = "content-wrapper"
+                child(Topbar::class) {}
+                div("container-fluid") {
                     switch {
-                        route<ProjectProps>("/:organization/:project") { props ->
+                        route<ProjectProps>("/project/:organization/:project") { props ->
                             child(Dashboard::class) {
                                 attrs {
                                     project = props.match.params.project
@@ -40,11 +42,14 @@ fun main() {
                                 }
                             }
                         }
+                        route("/dashboard") {
+                            child(collectionView()) {}
+                        }
                         route("*", FallbackView::class)
                     }
                 }
+                child(Footer::class) {}
             }
-            child(Footer::class) {}
         }
     }
 

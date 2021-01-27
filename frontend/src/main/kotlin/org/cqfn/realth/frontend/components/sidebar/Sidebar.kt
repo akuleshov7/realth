@@ -15,6 +15,7 @@ import react.dom.p
 import react.dom.span
 import react.dom.strong
 import react.dom.ul
+import react.router.dom.LinkComponent
 
 import kotlinx.html.id
 
@@ -28,7 +29,11 @@ class Sidebar : RComponent<RProps, RState>() {
             attrs.id = "accordionSidebar"
 
             // Sidebar - Brand
-            a(href = "index.html", classes = "sidebar-brand d-flex align-items-center justify-content-center") {
+            child(LinkComponent::class) {
+                attrs {
+                    to = "/"
+                    className = "sidebar-brand d-flex align-items-center justify-content-center"
+                }
                 div("sidebar-brand-icon rotate-n-15") {
                     i("fas fa-tools") {}
                 }
@@ -41,10 +46,14 @@ class Sidebar : RComponent<RProps, RState>() {
 
             // Nav Item - Dashboard
             li("nav-item active") {
-                a(href = "index.html", classes = "nav-link") {
+                child(LinkComponent::class) {
+                    attrs {
+                        to = "/dashboard"
+                        className = "nav-link"
+                    }
                     i("fas fa-fw fa-tachometer-alt") {}
                     span {
-                        +"Dashboard"
+                        +"Github overview"
                     }
                 }
             }
@@ -61,19 +70,25 @@ class Sidebar : RComponent<RProps, RState>() {
                     header2 = "My repositories:"
                     collapsibleDivId = "collapseTwo"
                     ariaLabeledBy = "headingTwo"
-                    items = listOf("buttons.html" to "realth", "cards.html" to "diktat")
+                    items = listOf(
+                        "/project/cqfn/realth" to "realth",
+                        "/project/cqfn/diktat" to "diktat"
+                    )
                 }
             }
 
             // Nav Item - Github overview collapsible menu
             child(CollapsibleMenu::class) {
                 attrs {
-                    header = "Github"
-                    headerFaClass = "fa-github"
-                    header2 = "Github overview:"
+                    header = "Collections"
+                    headerFaClass = "fa-object-group"
+                    header2 = "Your project collections:"
                     collapsibleDivId = "collapseUtilities"
                     ariaLabeledBy = "headingUtilities"
-                    items = listOf("github.html" to "github")
+                    items = listOf(
+                        "/dashboard" to "github",
+                        "/dashboard" to "cqfn",
+                    )
                 }
             }
 
@@ -89,14 +104,14 @@ class Sidebar : RComponent<RProps, RState>() {
                     collapsibleDivId = "collapsePages"
                     ariaLabeledBy = "headingPages"
                     items = listOf(
-                        "types.html" to "Issue types",
-                        "vcs.html" to "VCS",
-                        "project-structure.html" to "Project structure"
+                        "/types" to "Issue types",
+                        "/types/vcs" to "VCS",
+                        "/types/project-structure" to "Project structure"
                     )
                 }
             }
 
-            navItem("realth.html", "About us", "fas fa-fw fa-address-card")
+            navItem("/about", "About us", "fas fa-fw fa-address-card")
 
             hr("sidebar-divider d-none d-md-block") {}
 
@@ -138,7 +153,11 @@ class Sidebar : RComponent<RProps, RState>() {
     private fun RBuilder.navItem(href: String,
                                  text: String,
                                  iconClasses: String) = li("nav-item") {
-        a(href, classes = "nav-link") {
+        child(LinkComponent::class) {
+            attrs {
+                to = href
+                className = "nav-link"
+            }
             i(iconClasses) {}
             span { +text }
         }

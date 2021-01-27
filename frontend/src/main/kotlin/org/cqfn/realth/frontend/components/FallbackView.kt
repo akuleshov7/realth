@@ -7,6 +7,7 @@ import react.RState
 import react.dom.a
 import react.dom.div
 import react.dom.p
+import react.router.dom.LinkComponent
 
 /**
  * A [RComponent] representing fallback page with 404 error
@@ -25,7 +26,8 @@ class FallbackView : RComponent<RProps, RState>() {
             p("text-gray-500 mb-0") {
                 +"It looks like you found a glitch in the matrix..."
             }
-            a(href = "/") {
+            child(LinkComponent::class) {
+                attrs.to = "/"
                 +"← Back to Dashboard"  // todo: use '&larr;' instead when backend will be able to set headers
             }
         }

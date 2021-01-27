@@ -37,12 +37,15 @@ kotlin {
             compileOnly(devNpm("file-loader", "*"))
 //            compileOnly(devNpm("mini-css-extract-plugin", "*"))
 
+            // todo: bootstrap and jquery.easing need jquery, but if it's loaded from webpack, they can't use it
+            //  and for some reason neither can be loaded from webpack. So they reside in html, bootstrap is here for scss.
+            compileOnly(npm("bootstrap", "4.5.3"))
             // npm dependencies to include in webpack bundle and some kotlin adapters
-            implementation(npm("bootstrap", "4.5.3"))
             compileOnly(npm("@fortawesome/fontawesome-free", "5.15.1"))  // needed to copy fonts to resources, not needed in runtime
             compileOnly("kotlin.js.externals:kotlin-js-jquery:3.2.0-0")  // todo: use react instead of jquery
             implementation("org.jetbrains:kotlin-react:${Versions.KOTLIN_REACT}")
             implementation("org.jetbrains:kotlin-react-dom:${Versions.KOTLIN_REACT}")
+            implementation("org.jetbrains:kotlin-react-router-dom:${Versions.KOTLIN_REACT_ROUTER}")
             implementation("org.jetbrains:kotlin-react-table:7.6.3-pre.143-kotlin-1.4.21")
             implementation(npm("react", Versions.REACT))
             implementation(npm("react-dom", Versions.REACT))

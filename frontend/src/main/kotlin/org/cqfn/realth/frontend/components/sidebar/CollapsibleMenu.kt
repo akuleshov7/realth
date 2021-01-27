@@ -9,12 +9,15 @@ import react.RComponent
 import react.RProps
 import react.RState
 import react.dom.a
+import react.dom.button
 import react.dom.div
 import react.dom.h6
 import react.dom.i
 import react.dom.li
 import react.dom.span
+import react.router.dom.LinkComponent
 
+import kotlinx.html.ButtonType
 import kotlinx.html.id
 
 /**
@@ -60,11 +63,11 @@ class CollapsibleMenuProps : RProps {
 class CollapsibleMenu : RComponent<CollapsibleMenuProps, RState>() {
     override fun RBuilder.render() {
         li("nav-item") {
-            a(href = "#", classes = "nav-link collapsed") {
+            button(type = ButtonType.button, classes = "btn shadow-none nav-link collapsed") {
                 attrs {
                     attributes["data-toggle"] = "collapse"
                     attributes["data-target"] = "#${props.collapsibleDivId}"
-                    attributes["aria-expanded"] = "true"
+                    attributes["aria-expanded"] = "false"
                     attributes["aria-controls"] = props.collapsibleDivId
                 }
                 i("fas fa-fw ${props.headerFaClass}") {}
@@ -81,7 +84,11 @@ class CollapsibleMenu : RComponent<CollapsibleMenuProps, RState>() {
                         +props.header2
                     }
                     props.items.forEach { (link, name) ->
-                        a(href = link, classes = "collapse-item") {
+                        child(LinkComponent::class) {
+                            attrs {
+                                to = link
+                                className = "collapse-item"
+                            }
                             +name
                         }
                     }

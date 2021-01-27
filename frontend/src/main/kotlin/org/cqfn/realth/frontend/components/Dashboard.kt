@@ -46,7 +46,7 @@ class ProjectProps : RProps {
 /**
  * [RComponent] for the project dashboard
  */
-@Suppress("EMPTY_BLOCK_STRUCTURE_ERROR")
+@Suppress("EMPTY_BLOCK_STRUCTURE_ERROR", "TOO_LONG_FUNCTION", "LongMethod")
 class Dashboard : RComponent<ProjectProps, RState>() {
     override fun RBuilder.render() {
         // Page Heading
