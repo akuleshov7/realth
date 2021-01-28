@@ -1,3 +1,9 @@
 plugins {
-    kotlin("multiplatform") version Versions.KOTLIN apply false
+    kotlin("multiplatform")
+}
+
+kotlin {
+    jvm()
+
+    js().browser()
 }
