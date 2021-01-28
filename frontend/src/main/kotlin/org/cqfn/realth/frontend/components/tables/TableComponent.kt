@@ -16,7 +16,6 @@ import react.dom.h6
 import react.dom.span
 import react.dom.table
 import react.dom.tbody
-import react.dom.td
 import react.dom.th
 import react.dom.thead
 import react.dom.tr
@@ -25,6 +24,7 @@ import react.table.Column
 import react.table.TableInstance
 import react.table.useSortBy
 import react.table.useTable
+import kotlin.js.json
 
 /**
  * [RProps] of a data table
@@ -43,7 +43,7 @@ class TableProps : RProps {
  * @param columns columns as an array of [Column]
  * @return a functional react component
  */
-@Suppress("TOO_LONG_FUNCTION")
+@Suppress("TOO_LONG_FUNCTION", "ForbiddenComment")
 fun <D : Any> RBuilder.tableComponent(data: Array<out D>, columns: Array<out Column<D, *>>) = functionalComponent<TableProps> { props ->
     val tableInstance: TableInstance<D> = useTable(useSortBy) {
         this.columns = columns
@@ -90,10 +90,12 @@ fun <D : Any> RBuilder.tableComponent(data: Array<out D>, columns: Array<out Col
                             tr {
                                 spread(row.getRowProps())
                                 row.cells.map { cell ->
-                                    td {
-                                        spread(cell.getCellProps())
-                                        +cell.render("Cell")
-                                    }
+                                    // fixme: userProps are not present in actual html, but .render("Cell") produces td, so can't wrap
+                                    child(cell.render("Cell", userProps = json().apply {
+                                        spread(cell.getCellProps()) { key, value ->
+                                            this[key] = value
+                                        }
+                                    }))
                                 }
                             }
                         }
