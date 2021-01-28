@@ -6,22 +6,25 @@
 
 package org.cqfn.realth.frontend.components.tables
 
+import org.cqfn.realth.frontend.utils.spread
+
 import react.RBuilder
 import react.RComponent
 import react.RProps
 import react.dom.div
 import react.dom.h6
+import react.dom.span
 import react.dom.table
 import react.dom.tbody
+import react.dom.td
 import react.dom.th
 import react.dom.thead
 import react.dom.tr
 import react.functionalComponent
 import react.table.Column
 import react.table.TableInstance
+import react.table.useSortBy
 import react.table.useTable
-
-import kotlinx.html.role
 
 /**
  * [RProps] of a data table
@@ -42,7 +45,7 @@ class TableProps : RProps {
  */
 @Suppress("TOO_LONG_FUNCTION")
 fun <D : Any> RBuilder.tableComponent(data: Array<out D>, columns: Array<out Column<D, *>>) = functionalComponent<TableProps> { props ->
-    val tableInstance: TableInstance<D> = useTable {
+    val tableInstance: TableInstance<D> = useTable(useSortBy) {
         this.columns = columns
         this.data = data
     }
@@ -56,28 +59,41 @@ fun <D : Any> RBuilder.tableComponent(data: Array<out D>, columns: Array<out Col
         div("card-body") {
             div("table-responsive") {
                 table("table table-bordered") {
-                    tableInstance.getTableProps().let { tableProps ->
-                        attrs.role = tableProps.role
-                    }
+                    spread(tableInstance.getTableProps())
                     attrs["width"] = "100%"
                     attrs["cellSpacing"] = "0"
                     thead {
                         tableInstance.headerGroups.map { headerGroup ->
                             tr {
+                                spread(headerGroup.getHeaderGroupProps())
                                 headerGroup.headers.map { column ->
-                                    th {
+                                    val columnProps = column.getHeaderProps(column.getSortByToggleProps())
+                                    th(classes = columnProps.className) {
+                                        spread(columnProps)
                                         +column.render("Header")
+                                        span {
+                                            +when {
+                                                column.isSorted -> " 🔽"
+                                                column.isSortedDesc -> " 🔼"
+                                                else -> ""
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                     tbody {
+                        spread(tableInstance.getTableBodyProps())
                         tableInstance.rows.map { row ->
                             tableInstance.prepareRow(row)
                             tr {
+                                spread(row.getRowProps())
                                 row.cells.map { cell ->
-                                    child(cell.render("Cell"))
+                                    td {
+                                        spread(cell.getCellProps())
+                                        +cell.render("Cell")
+                                    }
                                 }
                             }
                         }

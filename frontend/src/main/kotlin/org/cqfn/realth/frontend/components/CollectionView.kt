@@ -37,5 +37,10 @@ internal fun RBuilder.collectionView() = tableComponent(
                 +it.value.url
             }
         }
+        column(id = "projectQualityIndex", header = "Quality") {
+            td {
+                +"${it.value.qualityIndex ?: "N/A"}"
+            }
+        }
     }
 )
